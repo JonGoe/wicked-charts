@@ -55,7 +55,8 @@ public class ShowcaseApplication extends WebApplication {
 				new JavaScriptResourceReference(ShowcaseApplication.class,
 						"jquery-1.8.3.min-IEfix.js"));
 
-		mountPage("/start/chartjs", HomepageChartJs.class);
+		//mountPage("/start/chartjs", HomepageChartJs.class);
+		mountPage("/start/chartjs/${charts}", HomepageChartJs.class);
 		mountPage("/start/highcharts", HomepageHighcharts.class);
 		mountPage("/start/highcharts/${theme}", HomepageHighcharts.class);
 		mountPage("/simple", SimplePage.class);
