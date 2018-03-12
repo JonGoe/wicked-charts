@@ -32,14 +32,6 @@ public class UpdateChartJsLink extends AjaxLink<Void> {
 
     private static final long serialVersionUID = 1L;
 
-    private final Chart chart;
-
-    private final ChartConfiguration config;
-
-    private final Label codeContainer;
-
-    private HomepageChartJs pageRef;
-
     private String chartVal;
 
     /**
@@ -48,28 +40,10 @@ public class UpdateChartJsLink extends AjaxLink<Void> {
      * @param id            the wicket id of the link
      * @param chart         the container containing the chart
      * @param codeContainer the container containing the code display of the chart's options
-     * @param options       the options of the chart.
      */
-    public UpdateChartJsLink(final String id, final Chart chart,
-                           final Label codeContainer, final ChartConfiguration config, HomepageChartJs pageRef, String val) {
+    public UpdateChartJsLink(final String id, String val) {
         super(id);
-        this.chart = chart;
-        this.codeContainer = codeContainer;
-        this.config = config;
-        this.pageRef = pageRef;
         this.chartVal = val;
-    }
-
-    public Chart getChartContainer() {
-        return this.chart;
-    }
-
-    public Label getCodeContainer() {
-        return this.codeContainer;
-    }
-
-    public ChartConfiguration getOptions() {
-        return this.config;
     }
 
     @Override

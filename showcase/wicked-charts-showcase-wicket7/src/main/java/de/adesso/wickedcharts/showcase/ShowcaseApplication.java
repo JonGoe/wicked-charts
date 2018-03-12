@@ -56,8 +56,8 @@ public class ShowcaseApplication extends WebApplication {
 						"jquery-1.8.3.min-IEfix.js"));
 		
 		//mountPage("/start/chartjs", HomepageChartJs.class);
-		mountPage("/", HomepageChartJs.class);
-		mountPage("/start/highcharts", HomepageHighcharts.class);
+		mountPage("/chartjs/", HomepageChartJs.class);
+		mountPage("/highcharts/", HomepageHighcharts.class);
 		mountPage("/start/highcharts/${theme}", HomepageHighcharts.class);
 		mountPage("/simple", SimplePage.class);
 		mountPage("/modal", ModalWindowPage.class);

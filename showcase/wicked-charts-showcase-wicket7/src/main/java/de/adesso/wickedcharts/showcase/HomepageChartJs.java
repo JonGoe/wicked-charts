@@ -45,18 +45,23 @@ public class HomepageChartJs extends WebPage implements Serializable {
     private static final long serialVersionUID = 1L;
     
     public HomepageChartJs(final PageParameters parameters) {
-    	Fragment optionalMarkup = new Fragment("optionalMarkup","defaultTooltip",this);
+
         Chart chart = this.getChartFromParams(parameters);
         this.add(chart);
+
+        //Add the optional markup
+        Fragment optionalMarkup = new Fragment("optionalMarkup","defaultTooltip",this);
         chart.getParent().add(optionalMarkup);
         ((ShowcaseConfiguration)chart.getChartConfiguration()).modfiyIndividualMarkup((Fragment)chart.getParent().get("optionalMarkup"));
         ((Fragment) chart.getParent().get("optionalMarkup")).detach();
         optionalMarkup = (Fragment) chart.getParent().get("optionalMarkup");
         this.add(optionalMarkup);
         optionalMarkup.setOutputMarkupId(true);
+
+        //Add links to the charts and the code container
         addNavigationLinks();
-        Label codeContainer = this.addCodeContainer(parameters);
-        this.addChartLinks(chart, codeContainer, optionalMarkup);
+        addCodeContainer(parameters);
+        this.addChartLinks();
     }
 
 	private Label addCodeContainer(final PageParameters parameters) {
@@ -74,127 +79,67 @@ public class HomepageChartJs extends WebPage implements Serializable {
 		this.add(new ChartjsShowcaseLink());
 	}
 	
-	private void addChartLinks(Chart chart, Label codeContainer, Fragment optionalMarkup) { 
-		this.add(new UpdateChartJsLink("LineChartBasic", chart, codeContainer,
-                new LineChartBasicConfiguration(), this, "lineBasic"));
-		this.add(new UpdateChartJsLink("BarChartVertical", chart, codeContainer,
-                new BarChartVerticalConfiguration(), this, "barVertical"));
-        this.add(new UpdateChartJsLink("LineChartMultiAxis", chart, codeContainer,
-                new LineChartMultiAxisConfiguration(), this, "lineMultiAxis"));
-        this.add(new UpdateChartJsLink("LineChartSteppedBefore", chart, codeContainer,
-                new LineChartSteppedBeforeConfiguration(), this, "lineSteppedBefore"));
-        this.add(new UpdateChartJsLink("LineChartSteppedAfter", chart, codeContainer,
-                new LineChartSteppedAfterConfiguration(), this, "lineSteppedAfter"));
-        this.add(new UpdateChartJsLink("LineChartInterpolated", chart, codeContainer,
-                new LineChartInterpolatedConfiguration(), this, "lineInterpolated"));
-        this.add(new UpdateChartJsLink("LineStyles", chart, codeContainer,
-                new LineStylesConfiguration(),this, "lineStyles"));
-        this.add(new UpdateChartJsLink("PointStyles", chart, codeContainer,
-                new PointStylesConfiguration(),this, "pointStyles"));
-        this.add(new UpdateChartJsLink("PointSizes", chart, codeContainer,
-                new LineChartWithDifferentPointSizesConfiguration(),this, "pointSizes"));
-        this.add(new UpdateChartJsLink("BarChartHorizontal", chart, codeContainer,
-                new BarChartHorizontalConfiguration(),this, "barHorizontal"));
-        this.add(new UpdateChartJsLink("BarChartStacked", chart, codeContainer,
-                new BarChartStackedConfiguration(),this, "barStacked"));
-        this.add(new UpdateChartJsLink("BarChartStackedGroup", chart, codeContainer,
-                new BarChartStackedGroupConfiguration(),this, "barStackedGroup"));
-        this.add(new UpdateChartJsLink("BarChartMultiAxis", chart, codeContainer,
-                new BarChartMultiAxisConfiguration(),this, "barMultiAxis"));
-        this.add(new UpdateChartJsLink("PieChart", chart, codeContainer,
-                new PieChartConfiguration(),this, "pie"));
-        this.add(new UpdateChartJsLink("AreaLineBoundariesChartFalse", chart, codeContainer,
-                new AreaLineBoundariesChartFalseConfiguration(),this, "areaBoundariesFalse"));
-        this.add(new UpdateChartJsLink("AreaLineBoundariesChartStart", chart, codeContainer,
-                new AreaLineBoundariesChartStartConfiguration(),this, "areaBoundariesStart"));
-        this.add(new UpdateChartJsLink("AreaLineBoundariesChartEnd", chart, codeContainer,
-                new AreaLineBoundariesChartEndConfiguration(),this, "areaBoundariesEnd"));
-        this.add(new UpdateChartJsLink("AreaLineBoundariesChartOrigin", chart, codeContainer,
-                new AreaLineBoundariesChartOriginConfiguration(),this, "areaBoundariesOrigin"));
-        this.add(new UpdateChartJsLink("LineChartStacked", chart, codeContainer,
-                new LineChartStackedConfiguration(),this, "lineStacked"));
-        this.add(new UpdateChartJsLink("LineChartDataset", chart, codeContainer,
-                new LineChartAreaDatasetConfiguration(),this, "lineDataset"));
-        this.add(new UpdateChartJsLink("RadarChart", chart, codeContainer,
-                new RadarChartConfiguration(),this, "radar"));
-        this.add(new UpdateChartJsLink("DoughnutChart", chart, codeContainer,
-                new DoughnutChartConfiguration(),this, "doughnut"));
-        this.add(new UpdateChartJsLink("PolarAreaChart", chart, codeContainer,
-                new PolarAreaChartConfiguration(),this, "polarArea"));
-        this.add(new UpdateChartJsLink("ScatterChart", chart, codeContainer,
-                new ScatterChartConfiguration(),this, "scatter"));
-        this.add(new UpdateChartJsLink("ScatterChartMultiAxis", chart, codeContainer,
-                new ScatterChartMultiAxisConfiguration(),this, "scatterMultiAxis"));
-        this.add(new UpdateChartJsLink("ComboBarLineChart", chart, codeContainer,
-                new ComboBarLineChartConfiguration(),this, "comboBarLine"));
-        this.add(new UpdateChartJsLink("LegendPositionTop", chart, codeContainer,
-                new LegendPositionTopConfiguration(),this, "legendPositionTop"));
-        this.add(new UpdateChartJsLink("LegendPositionRight", chart, codeContainer,
-                new LegendPositionRightConfiguration(),this, "legendPositionRight"));
-        this.add(new UpdateChartJsLink("LegendPositionBottom", chart, codeContainer,
-                new LegendPositionBottomConfiguration(),this, "legendPositionBottom"));
-        this.add(new UpdateChartJsLink("LegendPositionLeft", chart, codeContainer,
-                new LegendPositionLeftConfiguration(),this, "legendPositionLeft"));
-        this.add(new UpdateChartJsLink("StepSize", chart, codeContainer,
-                new LinearStepSizeConfiguration(),this, "stepSize"));
-        this.add(new UpdateChartJsLink("MinMax", chart, codeContainer,
-                new MinMaxConfiguration(),this, "minMax"));
-        this.add(new UpdateChartJsLink("MinMaxSuggested", chart, codeContainer,
-                new MinMaxSuggestedConfiguration(),this, "minMaxSuggested"));
-        this.add(new UpdateChartJsLink("GridLinesBasic", chart, codeContainer,
-                new GridLinesBasicConfiguration(),this, "gridLinesBasic"));
-        this.add(new UpdateChartJsLink("GridLinesDisplayFalse", chart, codeContainer,
-                new GridLinesDisplayFalseConfiguration(),this, "gridLinesDisplayFalse"));
-        this.add(new UpdateChartJsLink("GridLinesDisplayFalseNoBorder", chart, codeContainer,
-                new GridLinesDisplayFalseNoBorderConfiguration(),this, "gridLinesDisplayFalseNoBorder"));
-        this.add(new UpdateChartJsLink("GridLinesChartArea", chart, codeContainer,
-                new GridLinesChartAreaConfiguration(),this, "gridLinesArea"));
-        this.add(new UpdateChartJsLink("GridLinesTicks", chart, codeContainer,
-                new GridLinesTicksConfiguration(),this, "gridLinesTicks"));
-        this.add(new UpdateChartJsLink("GridLinesStyle", chart, codeContainer,
-                new GridLineStylesConfiguration(),this, "gridLinesStyle"));
-        this.add(new UpdateChartJsLink("MultilineLabels", chart, codeContainer,
-                new MultilineLabelsConfiguration(),this, "multiLineLabels"));
-        this.add(new UpdateChartJsLink("LogarithmicLineChart", chart, codeContainer,
-                new LogarithmicLineChartConfiguration(),this, "lineLogarithmic"));
-        this.add(new UpdateChartJsLink("LogarithmicScatterChart", chart, codeContainer,
-                new LogarithmicScatterChartConfiguration(),this, "scatterLogarithmic"));
-        this.add(new UpdateChartJsLink("BubbleChart", chart, codeContainer,
-                new BubbleChartConfiguration(),this, "bubble"));
-        this.add(new UpdateChartJsLink("FilteringLabels", chart, codeContainer,
-                new FilteringLabelsConfiguration(),this, "filteringLabels"));
-        this.add(new UpdateChartJsLink("TimeLine", chart, codeContainer,
-                new TimeLineConfiguration(),this, "timeLine"));
-        this.add(new UpdateChartJsLink("NonNumeric", chart, codeContainer,
-                new NonNumericConfiguration(),this, "nonNumeric"));
-        this.add(new UpdateChartJsLink("TimePoint", chart, codeContainer,
-                new TimePointConfiguration(),this, "timePoint"));
-        this.add(new UpdateChartJsLink("TimeSeries", chart, codeContainer,
-                new TimeSeriesConfiguration(),this, "timeSeries"));
-        this.add(new UpdateChartJsLink("TimeCombo", chart, codeContainer,
-                new TimeComboConfiguration(),this, "timeCombo"));
-        this.add(new UpdateChartJsLink("OtherRadar", chart, codeContainer,
-                new OtherRadarChartConfiguration(),this, "radar2"));
-        this.add(new UpdateChartJsLink("TooltipCallbacks", chart, codeContainer,
-                new TooltipCallbacksConfiguration(),this, "tooltipCallbacks"));
-        this.add(new UpdateChartJsLink("TooltipBorder", chart, codeContainer,
-                new TooltipBorderConfiguration(),this, "tooltipBorder"));
-        this.add(new UpdateChartJsLink("TooltipHtmlLine", chart, codeContainer,
-                new TooltipHtmlLineConfiguration(),this, "tooltipHtmlLine"));
-        this.add(new UpdateChartJsLink("TooltipHtmlPie", chart, codeContainer,
-                new TooltipHtmlPieConfiguration(),this, "tooltipHtmlPie"));
-        this.add(new UpdateChartJsLink("TooltipHtmlPoints", chart, codeContainer,
-                new TooltipHtmlPointsConfiguration(),this, "tooltipHtmlPoints"));
-        this.add(new UpdateChartJsLink("LegendPointStyle", chart, codeContainer,
-               new LegendPointStyleConfiguration(),this, "legendPointStyle"));
-        this.add(new UpdateChartJsLink("LineChartProgressBar", chart, codeContainer,
-                new LineChartProgressBarConfiguration(),this, "lineProgressBar"));
-        this.add(new UpdateChartJsLink("TooltipAverage", chart, codeContainer,
-                new TooltipAverageConfiguration(),this, "tooltipAverage"));
-        this.add(new UpdateChartJsLink("TooltipNearest", chart, codeContainer,
-                new TooltipNearestConfiguration(),this, "tooltipNearest"));
-        this.add(new UpdateChartJsLink("DataLabellingChart", chart, codeContainer,
-                new DataLabellingChartConfiguration(),this, "dataLabelling"));
+	private void addChartLinks() {
+        this.add(new UpdateChartJsLink("LineChartBasic", "lineBasic"));
+		this.add(new UpdateChartJsLink("BarChartVertical" , "barVertical"));
+        this.add(new UpdateChartJsLink("LineChartMultiAxis", "lineMultiAxis"));
+        this.add(new UpdateChartJsLink("LineChartSteppedBefore", "lineSteppedBefore"));
+        this.add(new UpdateChartJsLink("LineChartSteppedAfter", "lineSteppedAfter"));
+        this.add(new UpdateChartJsLink("LineChartInterpolated", "lineInterpolated"));
+        this.add(new UpdateChartJsLink("LineStyles", "lineStyles"));
+        this.add(new UpdateChartJsLink("PointStyles", "pointStyles"));
+        this.add(new UpdateChartJsLink("PointSizes", "pointSizes"));
+        this.add(new UpdateChartJsLink("BarChartHorizontal", "barHorizontal"));
+        this.add(new UpdateChartJsLink("BarChartStacked", "barStacked"));
+        this.add(new UpdateChartJsLink("BarChartStackedGroup", "barStackedGroup"));
+        this.add(new UpdateChartJsLink("BarChartMultiAxis", "barMultiAxis"));
+        this.add(new UpdateChartJsLink("PieChart", "pie"));
+        this.add(new UpdateChartJsLink("AreaLineBoundariesChartFalse", "areaBoundariesFalse"));
+        this.add(new UpdateChartJsLink("AreaLineBoundariesChartStart", "areaBoundariesStart"));
+        this.add(new UpdateChartJsLink("AreaLineBoundariesChartEnd", "areaBoundariesEnd"));
+        this.add(new UpdateChartJsLink("AreaLineBoundariesChartOrigin", "areaBoundariesOrigin"));
+        this.add(new UpdateChartJsLink("LineChartStacked", "lineStacked"));
+        this.add(new UpdateChartJsLink("LineChartDataset", "lineDataset"));
+        this.add(new UpdateChartJsLink("RadarChart", "radar"));
+        this.add(new UpdateChartJsLink("DoughnutChart", "doughnut"));
+        this.add(new UpdateChartJsLink("PolarAreaChart", "polarArea"));
+        this.add(new UpdateChartJsLink("ScatterChart", "scatter"));
+        this.add(new UpdateChartJsLink("ScatterChartMultiAxis", "scatterMultiAxis"));
+        this.add(new UpdateChartJsLink("ComboBarLineChart", "comboBarLine"));
+        this.add(new UpdateChartJsLink("LegendPositionTop", "legendPositionTop"));
+        this.add(new UpdateChartJsLink("LegendPositionRight", "legendPositionRight"));
+        this.add(new UpdateChartJsLink("LegendPositionBottom", "legendPositionBottom"));
+        this.add(new UpdateChartJsLink("LegendPositionLeft", "legendPositionLeft"));
+        this.add(new UpdateChartJsLink("StepSize", "stepSize"));
+        this.add(new UpdateChartJsLink("MinMax", "minMax"));
+        this.add(new UpdateChartJsLink("MinMaxSuggested", "minMaxSuggested"));
+        this.add(new UpdateChartJsLink("GridLinesBasic", "gridLinesBasic"));
+        this.add(new UpdateChartJsLink("GridLinesDisplayFalse", "gridLinesDisplayFalse"));
+        this.add(new UpdateChartJsLink("GridLinesDisplayFalseNoBorder", "gridLinesDisplayFalseNoBorder"));
+        this.add(new UpdateChartJsLink("GridLinesChartArea", "gridLinesArea"));
+        this.add(new UpdateChartJsLink("GridLinesTicks", "gridLinesTicks"));
+        this.add(new UpdateChartJsLink("GridLinesStyle", "gridLinesStyle"));
+        this.add(new UpdateChartJsLink("MultilineLabels", "multiLineLabels"));
+        this.add(new UpdateChartJsLink("LogarithmicLineChart", "lineLogarithmic"));
+        this.add(new UpdateChartJsLink("LogarithmicScatterChart", "scatterLogarithmic"));
+        this.add(new UpdateChartJsLink("BubbleChart", "bubble"));
+        this.add(new UpdateChartJsLink("FilteringLabels", "filteringLabels"));
+        this.add(new UpdateChartJsLink("TimeLine", "timeLine"));
+        this.add(new UpdateChartJsLink("NonNumeric", "nonNumeric"));
+        this.add(new UpdateChartJsLink("TimePoint", "timePoint"));
+        this.add(new UpdateChartJsLink("TimeSeries", "timeSeries"));
+        this.add(new UpdateChartJsLink("TimeCombo", "timeCombo"));
+        this.add(new UpdateChartJsLink("OtherRadar", "radar2"));
+        this.add(new UpdateChartJsLink("TooltipCallbacks", "tooltipCallbacks"));
+        this.add(new UpdateChartJsLink("TooltipBorder", "tooltipBorder"));
+        this.add(new UpdateChartJsLink("TooltipHtmlLine", "tooltipHtmlLine"));
+        this.add(new UpdateChartJsLink("TooltipHtmlPie", "tooltipHtmlPie"));
+        this.add(new UpdateChartJsLink("TooltipHtmlPoints", "tooltipHtmlPoints"));
+        this.add(new UpdateChartJsLink("LegendPointStyle", "legendPointStyle"));
+        this.add(new UpdateChartJsLink("LineChartProgressBar", "lineProgressBar"));
+        this.add(new UpdateChartJsLink("TooltipAverage", "tooltipAverage"));
+        this.add(new UpdateChartJsLink("TooltipNearest", "tooltipNearest"));
+        this.add(new UpdateChartJsLink("DataLabellingChart", "dataLabelling"));
 	}
     
     private Chart getChartFromParams(final PageParameters params) {

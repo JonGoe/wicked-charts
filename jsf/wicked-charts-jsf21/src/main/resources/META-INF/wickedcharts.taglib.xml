@@ -5,7 +5,7 @@
 	<tag>
 		<tag-name>chart</tag-name>
 		<component>
-			<component-type>com.googlecode.wickedcharts.Chart</component-type>
+			<component-type>de.adesso.wickedcharts.Chart</component-type>
 		</component>
 	</tag>
 </facelet-taglib>

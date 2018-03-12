@@ -4,7 +4,7 @@
   "http://java.sun.com/dtd/web-facesconfig_1_1.dtd" >
 <faces-config>
 	<component>
-		<component-type>com.googlecode.wickedcharts.Chart</component-type>
-		<component-class>com.googlecode.wickedcharts.jsf21.UIChart</component-class>
+		<component-type>de.adesso.wickedcharts.Chart</component-type>
+		<component-class>de.adesso.wickedcharts.jsf21.UIChart</component-class>
 	</component>
 </faces-config>
