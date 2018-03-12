@@ -32,16 +32,14 @@ public class UpdateChartJsLink extends AjaxLink<Void> {
 
     private static final long serialVersionUID = 1L;
 
-    private String chartVal;
+    private final String chartVal;
 
     /**
      * Constructs a new Link.
      *
      * @param id            the wicket id of the link
-     * @param chart         the container containing the chart
-     * @param codeContainer the container containing the code display of the chart's options
      */
-    public UpdateChartJsLink(final String id, String val) {
+    public UpdateChartJsLink(final String id, final String val) {
         super(id);
         this.chartVal = val;
     }

@@ -19,8 +19,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Fragment;
@@ -38,7 +36,6 @@ import de.adesso.wickedcharts.showcase.configurations.legendposition.*;
 import de.adesso.wickedcharts.showcase.links.ChartjsShowcaseLink;
 import de.adesso.wickedcharts.showcase.links.HighchartsShowcaseLink;
 import de.adesso.wickedcharts.showcase.links.UpdateChartJsLink;
-
 
 public class HomepageChartJs extends WebPage implements Serializable {
 
@@ -143,20 +140,26 @@ public class HomepageChartJs extends WebPage implements Serializable {
 	}
     
     private Chart getChartFromParams(final PageParameters params) {
-        String chartString = null;
-        List<INamedParameters.NamedPair> pairs = params.getAllNamed();
+        String chartString;
         Chart config;
+
+        //Get the parameters of the page
+        List<INamedParameters.NamedPair> pairs = params.getAllNamed();
+
+        //If the showcase is started without any parameters
+        //set the parameters to lineBasic and give us a line Chart
         if(params.getAllNamed().size() == 0){
             PageParameters temp = new PageParameters();
             temp.add("chart", "lineBasic");
             setResponsePage(HomepageChartJs.class, temp);
             return new Chart("chart", new LineChartBasicConfiguration());
         }
-        chartString = params.getAllNamed().get(0).getValue();
 
+        chartString = params.getAllNamed().get(0).getValue();
         if(chartString == null) {
     		return new Chart("chart", new LineChartBasicConfiguration()); 
     	}
+
         switch(chartString) {
 
             case "barVertical":
@@ -405,13 +408,4 @@ public class HomepageChartJs extends WebPage implements Serializable {
         }
         return config;
     }
-
-	private ChartConfiguration getConfigurationToDisplay() {
-        ChartConfiguration config = ((ShowcaseSession) this.getSession())
-                .getCurrentChartjsConfiguration();
-        if (config == null) {
-        	config = new LineChartBasicConfiguration();
-        }
-        return config;
-	}
 }
