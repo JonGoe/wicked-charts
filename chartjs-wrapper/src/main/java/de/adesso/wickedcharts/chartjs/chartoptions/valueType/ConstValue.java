@@ -14,7 +14,6 @@ public class ConstValue extends ValueType {
 	public ConstValue(final String value) {
 		this.value = value;
 	}
-	
 
 	public static List<ConstValue> of(final List<String> constList) {
 		return constList.stream().map(string -> new ConstValue(string)).collect(Collectors.toList());

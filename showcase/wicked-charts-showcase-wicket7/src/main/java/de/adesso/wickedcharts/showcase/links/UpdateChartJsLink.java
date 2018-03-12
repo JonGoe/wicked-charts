@@ -17,6 +17,7 @@ package de.adesso.wickedcharts.showcase.links;
 import de.adesso.wickedcharts.wicket7.chartjs.Chart;
 
 import de.adesso.wickedcharts.chartjs.ChartConfiguration;
+import de.adesso.wickedcharts.showcase.HomepageChartJs;
 import de.adesso.wickedcharts.showcase.ShowcaseSession;
 import de.adesso.wickedcharts.showcase.StringFromResourceModel;
 import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration;
@@ -25,6 +26,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Fragment;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 public class UpdateChartJsLink extends AjaxLink<Void> {
 
@@ -35,7 +37,10 @@ public class UpdateChartJsLink extends AjaxLink<Void> {
     private final ChartConfiguration config;
 
     private final Label codeContainer;
-    
+
+    private HomepageChartJs pageRef;
+
+    private String chartVal;
 
     /**
      * Constructs a new Link.
@@ -46,11 +51,13 @@ public class UpdateChartJsLink extends AjaxLink<Void> {
      * @param options       the options of the chart.
      */
     public UpdateChartJsLink(final String id, final Chart chart,
-                           final Label codeContainer, final ChartConfiguration config) {
+                           final Label codeContainer, final ChartConfiguration config, HomepageChartJs pageRef, String val) {
         super(id);
         this.chart = chart;
         this.codeContainer = codeContainer;
         this.config = config;
+        this.pageRef = pageRef;
+        this.chartVal = val;
     }
 
     public Chart getChartContainer() {
@@ -67,31 +74,8 @@ public class UpdateChartJsLink extends AjaxLink<Void> {
 
     @Override
     public void onClick(final AjaxRequestTarget target) {
-        this.chart
-                .setChartConfiguration(this.getOptions());
-        ((ShowcaseSession) getSession())
-                .setCurrentChartjsConfiguration(this.config);
-
-        this.codeContainer
-                .setDefaultModel(new StringFromResourceModel(this.config
-                        .getClass(), this.config
-                        .getClass()
-                        .getSimpleName() + ".java"));
-
-        
-       
-        ((ShowcaseConfiguration)config).modfiyIndividualMarkup((Fragment) chart.getParent().get("optionalMarkup"));
-        ((Fragment) chart.getParent().get("optionalMarkup")).detach();
-        
-        target.add(this.chart);
-        target.add(this.codeContainer);
-        target.add((Fragment) chart.getParent().get("optionalMarkup"));
-
-        
-
-//         make syntaxhighlighter highlight the changed code
-        target
-                .appendJavaScript("SyntaxHighlighter.highlight();");
+        PageParameters params = new PageParameters();
+        params.add("chart", chartVal);
+        setResponsePage(HomepageChartJs.class, params);
     }
-
 }

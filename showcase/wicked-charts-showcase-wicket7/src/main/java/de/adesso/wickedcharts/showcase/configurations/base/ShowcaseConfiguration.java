@@ -49,8 +49,8 @@ public abstract class ShowcaseConfiguration extends ChartConfiguration implement
 
 	}
 
-	public void modfiyIndividualMarkup(Fragment optionalMarkup) {	
-		Fragment frag = new Fragment("optionalMarkup","defaultTooltip",optionalMarkup.getParent());
-		optionalMarkup.replaceWith(frag);
+	public void modfiyIndividualMarkup(Fragment optionalMarkup) {
+	    Fragment frag = new Fragment("optionalMarkup","defaultTooltip",optionalMarkup.getParent());
+	    optionalMarkup.replaceWith(frag);
 	}
 }
