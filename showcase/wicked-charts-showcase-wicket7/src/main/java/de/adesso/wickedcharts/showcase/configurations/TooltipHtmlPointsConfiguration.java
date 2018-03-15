@@ -52,7 +52,7 @@ public class TooltipHtmlPointsConfiguration extends ShowcaseConfiguration {
 				.setResponsive(true)
 				.setTitle(new Title()
 						.setDisplay(true)
-						.setText("Chart.js - Custom Tooltips using Data Points"))
+						.setText("HTML Tooltip - Points"))
 				.setTooltips(new Tooltips()
 						.setEnabled(false)
 						.setIntersect(false)

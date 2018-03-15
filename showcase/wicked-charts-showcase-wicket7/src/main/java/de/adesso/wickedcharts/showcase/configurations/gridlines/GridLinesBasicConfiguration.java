@@ -53,7 +53,7 @@ public class GridLinesBasicConfiguration extends ShowcaseConfiguration {
 				.setResponsive(true)
 				.setTitle(new Title()
 						.setDisplay(true)
-						.setText("Gridlines Settings"))
+						.setText("Gridlines - Basic"))
 				.setScales(new Scales()
 						.setXAxes(new AxesScale()
 								.setGridLines(gridLines))

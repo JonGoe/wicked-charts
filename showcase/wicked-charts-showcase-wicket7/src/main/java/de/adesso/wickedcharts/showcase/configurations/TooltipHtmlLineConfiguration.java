@@ -52,7 +52,7 @@ public class TooltipHtmlLineConfiguration extends ShowcaseConfiguration {
 				.setResponsive(true)
 				.setTitle(new Title()
 						.setDisplay(true)
-						.setText("Chart.js Line Chart - Custom Tooltips"))
+						.setText("HTML Tooltip - Line"))
 				.setTooltips(new Tooltips()
 						.setEnabled(false)
 						.setMode(TooltipMode.INDEX)

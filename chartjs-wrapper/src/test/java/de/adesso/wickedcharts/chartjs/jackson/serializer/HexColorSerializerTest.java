@@ -28,7 +28,8 @@ public class HexColorSerializerTest {
 
     @Test
     public void testHexStringSerializer() {
-        String json = renderer.toJson(testString);
+        testColor = new HexColor(testString);
+        String json = renderer.toJson(testColor);
         assertTrue(json.contains("#7BEA38"));
     }
 }

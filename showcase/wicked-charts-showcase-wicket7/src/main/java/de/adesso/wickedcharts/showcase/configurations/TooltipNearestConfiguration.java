@@ -56,7 +56,7 @@ public class TooltipNearestConfiguration extends ShowcaseConfiguration {
 				.setResponsive(true)
 				.setTitle(new Title()
 						.setDisplay(true)
-						.setText("Chart.js Tooltip Nearest Position"))
+						.setText("Tooltip Nearest Position"))
 				.setTooltips(new Tooltips()
 						.setMode(TooltipMode.INDEX)
 						.setPosition(TooltipPosition.NEAREST)

@@ -27,5 +27,4 @@ public class SimpleColorSerializer extends JsonSerializer<SimpleColor> {
 			rgbaSerializer.serialize((RgbaColor)color.getColor(), jgen, provider);
 		}
 	}
-
 }

@@ -55,7 +55,7 @@ public class TooltipAverageConfiguration extends ShowcaseConfiguration {
 				.setResponsive(true)
 				.setTitle(new Title()
 						.setDisplay(true)
-						.setText("Chart.js Tooltip Average Position"))
+						.setText("Tooltip Average Position"))
 				.setTooltips(new Tooltips()
 						.setMode(TooltipMode.INDEX)
 						.setPosition(TooltipPosition.AVERAGE)

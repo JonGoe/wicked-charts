@@ -19,11 +19,11 @@ public class HexColor extends Color {
                     + ". A hex color must be of the format \"^#[0-9a-fA-F]{6}$\".");
         }else{
             String red_s =  Character.toString(hexColor.charAt(1)) + Character.toString(hexColor.charAt(2));
-            red = Integer.parseInt(red_s);
+            red = Integer.parseInt(red_s, 16);
             String green_s = Character.toString(hexColor.charAt(3)) + Character.toString(hexColor.charAt(4));
-            green = Integer.parseInt(green_s);
+            green = Integer.parseInt(green_s, 16);
             String blue_s = Character.toString(hexColor.charAt(5)) + Character.toString(hexColor.charAt(6));
-            blue = Integer.parseInt(blue_s);
+            blue = Integer.parseInt(blue_s, 16);
         }
     }
 
