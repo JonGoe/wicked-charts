@@ -37,6 +37,7 @@ public class UpdateHighchartLink extends AjaxLink<Void> {
      * Constructs a new Link.
      *
      * @param id            the wicket id of the link
+     * @param themeVal      the name of the theme that will be used
      */
     public UpdateHighchartLink(final String id, String themeVal) {
         super(id);

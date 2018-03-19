@@ -15,6 +15,7 @@ package de.adesso.wickedcharts.showcase;
  */
 
 
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import de.adesso.wickedcharts.showcase.links.UpdateThemeLink;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.request.mapper.parameter.INamedParameters;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import de.adesso.wickedcharts.wicket7.chartjs.Chart;
@@ -48,16 +50,29 @@ public class HomepageChartJs extends WebPage implements Serializable {
         List<Chart> charts = getChartFromParams(parameters);
 
         //Add Charts
-        List<ChartComponent> components = new ArrayList<>();
-        for(Chart i : charts){
-            components.add(new ChartComponent(i));
-        }
-        add( new ListView<ChartComponent>( "components", components ){
-            protected void populateItem(ListItem item)
-            {
-                item.add( (ChartComponent)item.getModelObject() );
+        if(charts.size() > 1){
+            List<SmallChartComponent> components = new ArrayList<>();
+            for(Chart i : charts){
+                components.add(new SmallChartComponent(i));
             }
-        });
+            add( new ListView<SmallChartComponent>( "components", components ){
+                protected void populateItem(ListItem item)
+                {
+                    item.add( (SmallChartComponent)item.getModelObject() );
+                }
+            });
+        }else {
+            List<ChartComponent> components = new ArrayList<>();
+            for (Chart i : charts) {
+                components.add(new ChartComponent(i));
+            }
+            add( new ListView<ChartComponent>( "components", components ){
+                protected void populateItem(ListItem item)
+                {
+                    item.add( (ChartComponent)item.getModelObject() );
+                }
+            });
+        }
 
         //Add Code Components
         List<CodeComponent> code_components = new ArrayList<>();

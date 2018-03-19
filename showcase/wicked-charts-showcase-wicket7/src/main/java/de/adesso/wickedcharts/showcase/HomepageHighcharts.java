@@ -137,7 +137,6 @@ public class HomepageHighcharts extends WebPage {
     }
 
     private void addCodeContainer(Chart chart) {
-        System.out.println(chart.getOptions().getClass().getSimpleName());
         Label codeContainer = new Label("code", new StringFromResourceModel(
                 chart.getOptions().getClass(), chart.getOptions().getClass().getSimpleName()
                 + ".java"));
