@@ -14,6 +14,7 @@
  */
 package de.adesso.wickedcharts.showcase;
 
+import de.adesso.wickedcharts.highcharts.options.ChartOptions;
 import de.adesso.wickedcharts.highcharts.options.Options;
 import de.adesso.wickedcharts.highcharts.theme.*;
 import de.adesso.wickedcharts.showcase.links.*;
@@ -40,7 +41,7 @@ public class HomepageHighcharts extends WebPage {
         Chart chart = getChartFromParams(parameters);
         add(chart);
         addNavigationLinks();
-        addCodeContainer();
+        addCodeContainer(chart);
         addChartLinks(getThemeString(parameters));
         addThemeLinks(parameters);
     }
@@ -135,13 +136,13 @@ public class HomepageHighcharts extends WebPage {
         add(new UpdateHighchartLink("heatmap", theme));
     }
 
-    private Label addCodeContainer() {
+    private void addCodeContainer(Chart chart) {
+        System.out.println(chart.getOptions().getClass().getSimpleName());
         Label codeContainer = new Label("code", new StringFromResourceModel(
-                BasicLineOptions.class, BasicLineOptions.class.getSimpleName()
+                chart.getOptions().getClass(), chart.getOptions().getClass().getSimpleName()
                 + ".java"));
         codeContainer.setOutputMarkupId(true);
-        this.add(codeContainer);
-        return codeContainer;
+        add(codeContainer);
     }
 
     private Chart getChartFromParams(final PageParameters params) {
