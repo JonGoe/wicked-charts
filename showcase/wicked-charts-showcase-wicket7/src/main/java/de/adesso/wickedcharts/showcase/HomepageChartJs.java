@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.adesso.wickedcharts.showcase.configurations.gridlines.*;
+import de.adesso.wickedcharts.showcase.configurations.interactions.*;
 import de.adesso.wickedcharts.showcase.links.UpdateThemeLink;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -134,6 +135,7 @@ public class HomepageChartJs extends WebPage implements Serializable {
         this.add(new UpdateChartJsLink("LegendPointStyle", "legendPointStyle"));
         this.add(new UpdateChartJsLink("LineChartProgressBar", "lineProgressBar"));
         this.add(new UpdateChartJsLink("DataLabellingChart", "dataLabelling"));
+        this.add(new UpdateChartJsLink("TooltipInteractions", "tooltipInteractions"));
 	}
     
     private List<Chart> getChartFromParams(final PageParameters params) {
@@ -345,6 +347,21 @@ public class HomepageChartJs extends WebPage implements Serializable {
 
             case "dataLabelling":
                 config.add(new Chart("chart", new DataLabellingChartConfiguration()));
+                break;
+
+            case "tooltipInteractions":
+                config.add(new Chart("chart", new DatasetIntersectFalseConfiguration()));
+                config.add(new Chart("chart", new DatasetIntersectTrueConfiguration()));
+                config.add(new Chart("chart", new IndexIntersectFalseConfiguration()));
+                config.add(new Chart("chart", new IndexIntersectTrueConfiguration()));
+                config.add(new Chart("chart", new NearestIntersectFalseConfiguration()));
+                config.add(new Chart("chart", new NearestIntersectTrueConfiguration()));
+                config.add(new Chart("chart", new PointIntersectFalseConfiguration()));
+                config.add(new Chart("chart", new PointIntersectTrueConfiguration()));
+                config.add(new Chart("chart", new xIntersectFalseConfiguration()));
+                config.add(new Chart("chart", new xIntersectTrueConfiguration()));
+                config.add(new Chart("chart", new yIntersectFalseConfiguration()));
+                config.add(new Chart("chart", new yIntersectTrueConfiguration()));
                 break;
 
             default:
