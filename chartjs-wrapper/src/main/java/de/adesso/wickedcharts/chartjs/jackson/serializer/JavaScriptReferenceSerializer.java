@@ -16,5 +16,4 @@ public class JavaScriptReferenceSerializer extends JsonSerializer<JavaScriptRefe
 			throws IOException, JsonProcessingException {
 		gen.writeRawValue(value.getRef());
 	}
-
 }

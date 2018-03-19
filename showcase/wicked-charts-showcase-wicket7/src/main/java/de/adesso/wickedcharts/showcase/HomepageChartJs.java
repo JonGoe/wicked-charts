@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.adesso.wickedcharts.showcase.configurations.gridlines.*;
+import de.adesso.wickedcharts.showcase.links.UpdateThemeLink;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;

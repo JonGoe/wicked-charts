@@ -14,19 +14,12 @@
  */
 package de.adesso.wickedcharts.showcase.links;
 
-import de.adesso.wickedcharts.highcharts.options.Options;
 import de.adesso.wickedcharts.showcase.HomepageHighcharts;
-import de.adesso.wickedcharts.wicket7.highcharts.Chart;
-
-import de.adesso.wickedcharts.showcase.ShowcaseSession;
-import de.adesso.wickedcharts.showcase.StringFromResourceModel;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-public class UpdateHighchartLink extends AjaxLink<Void> {
+public class UpdateThemeLink extends AjaxLink<Void> {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,12 +31,11 @@ public class UpdateHighchartLink extends AjaxLink<Void> {
      *
      * @param id            the wicket id of the link
      */
-    public UpdateHighchartLink(final String id, String themeVal) {
+    public UpdateThemeLink(final String id, String chart) {
         super(id);
-        this.chartVal = id;
-        this.themeVal = themeVal;
+        this.chartVal = chart;
+        this.themeVal = id;
     }
-
 
     @Override
     public void onClick(final AjaxRequestTarget target) {

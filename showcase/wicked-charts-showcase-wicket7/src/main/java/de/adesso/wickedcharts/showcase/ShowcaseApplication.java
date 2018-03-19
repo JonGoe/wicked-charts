@@ -58,7 +58,6 @@ public class ShowcaseApplication extends WebApplication {
 		//mountPage("/start/chartjs", HomepageChartJs.class);
 		mountPage("/chartjs/", HomepageChartJs.class);
 		mountPage("/highcharts/", HomepageHighcharts.class);
-		mountPage("/start/highcharts/${theme}", HomepageHighcharts.class);
 		mountPage("/simple", SimplePage.class);
 		mountPage("/modal", ModalWindowPage.class);
 
