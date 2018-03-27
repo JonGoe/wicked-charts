@@ -16,8 +16,11 @@ buildscript {
 
 subprojects {
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2e66a1dfd4a7b16bbd28a8dcd4015959d1078d06
     apply plugin: 'java'
     apply plugin: 'com.jfrog.artifactory'
     apply plugin: 'com.jfrog.bintray'
