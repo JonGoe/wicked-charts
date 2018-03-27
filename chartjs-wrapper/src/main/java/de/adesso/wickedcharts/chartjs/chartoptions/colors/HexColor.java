@@ -1,6 +1,16 @@
 package de.adesso.wickedcharts.chartjs.chartoptions.colors;
 
+import lombok.EqualsAndHashCode;
+
+/**
+  * Defines the color as a hexadecimal encoded color.
+  *
+  * @see <a
+  *      href="http://www.chartjs.org/docs/latest/general/colors.html">http://www.chartjs.org/docs/latest/general/colors.html</a>
+  *
+  */
 @lombok.Data
+@EqualsAndHashCode(callSuper=false)
 public class HexColor extends Color {
 
     private int red;

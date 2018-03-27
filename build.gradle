@@ -12,10 +12,11 @@ buildscript {
     }
 }
 
+
+
 subprojects {
 
-    //TODO: there are errors when building with Javadoc
-    tasks.withType(Javadoc).all { enabled = false }
+
 
     apply plugin: 'java'
     apply plugin: 'com.jfrog.artifactory'

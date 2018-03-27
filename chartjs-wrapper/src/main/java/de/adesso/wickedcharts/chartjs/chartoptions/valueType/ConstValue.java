@@ -4,10 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+/**
+  * Defines the value type as a constant value
+  *
+  *
+  */
 @Accessors(chain = true)
 @lombok.Data
+@EqualsAndHashCode(callSuper = false)
 public class ConstValue extends ValueType {
 	private final String value;
 	
