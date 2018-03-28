@@ -1,4 +1,4 @@
-/**
+/*
  *   Copyright 2012-2013 Wicked Charts (http://wicked-charts.googlecode.com)
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,6 +37,12 @@ public class HomepageHighcharts extends WebPage {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Constructs the page according to the current parameters
+     * This constructor is called each time a new chart or theme is
+     * selected.
+     * @param parameters the page parameters from the page URI
+     */
     public HomepageHighcharts(final PageParameters parameters) {
         Chart chart = getChartFromParams(parameters);
         add(chart);
@@ -46,6 +52,10 @@ public class HomepageHighcharts extends WebPage {
         addThemeLinks(parameters);
     }
 
+    /**
+     * Adds links to the different themes
+     * @param parameters the page parameters from the page URI
+     */
     private void addThemeLinks(PageParameters parameters){
         List<INamedParameters.NamedPair> pairs = parameters.getAllNamed();
         if (parameters.getAllNamed().size() < 2) {
@@ -66,6 +76,11 @@ public class HomepageHighcharts extends WebPage {
         }
     }
 
+    /**
+     * Returns the name of the current theme from the page parameters
+     * @param parameters the page parameters from the page URI
+     * @return The name of the current theme
+     */
     private String getThemeString(PageParameters parameters){
         String themeString = "default";
         List<INamedParameters.NamedPair> pairs = parameters.getAllNamed();
@@ -82,6 +97,9 @@ public class HomepageHighcharts extends WebPage {
 		add(new ChartjsShowcaseLink());
 	}
 
+    /**
+     * Adds links to the charts in the navigation sidebar
+     */
     private void addChartLinks(String theme) {
         add(new UpdateHighchartLink("line", theme));
         add(new UpdateHighchartLink("splineWithSymbols", theme));
@@ -136,6 +154,11 @@ public class HomepageHighcharts extends WebPage {
         add(new UpdateHighchartLink("heatmap", theme));
     }
 
+
+    /**
+     * Adds a code container corresponding to the current chart
+     * @param chart The currently selected chart
+     */
     private void addCodeContainer(Chart chart) {
         Label codeContainer = new Label("code", new StringFromResourceModel(
                 chart.getOptions().getClass(), chart.getOptions().getClass().getSimpleName()
@@ -144,6 +167,11 @@ public class HomepageHighcharts extends WebPage {
         add(codeContainer);
     }
 
+    /**
+     * Returns a Chart object from the current page parameters
+     * @param params the page parameters from the page URI
+     * @return a Chart
+     */
     private Chart getChartFromParams(final PageParameters params) {
         String chartString;
         String themeString;
@@ -380,15 +408,26 @@ public class HomepageHighcharts extends WebPage {
         return config.get(0);
     }
 
-    private Options getOptionsToDisplay() {
-        Options options = ((ShowcaseSession) this.getSession())
-                .getCurrentChartOptions();
-        if (options == null) {
-            options = new BasicLineOptions();
+    private Theme getThemeFromParams(String themeString) {
+        if ("grid".equals(themeString)) {
+            return new GridTheme();
+        } else if ("skies".equals(themeString)) {
+            return new SkiesTheme();
+        } else if ("gray".equals(themeString)) {
+            return new GrayTheme();
+        } else if ("darkblue".equals(themeString)) {
+            return new DarkBlueTheme();
+        } else {
+            // default theme
+            return null;
         }
-        return options;
     }
 
+    /**
+     * Used in the renderHead method to highlight the currently
+     * selected theme tab
+     * @return the index of the currently selected theme tab
+     */
     private int getSelectedTab() {
         String theme = "default";
         List<INamedParameters.NamedPair> pairs = getPageParameters().getAllNamed();
@@ -408,21 +447,10 @@ public class HomepageHighcharts extends WebPage {
         }
     }
 
-    private Theme getThemeFromParams(String themeString) {
-        if ("grid".equals(themeString)) {
-            return new GridTheme();
-        } else if ("skies".equals(themeString)) {
-            return new SkiesTheme();
-        } else if ("gray".equals(themeString)) {
-            return new GrayTheme();
-        } else if ("darkblue".equals(themeString)) {
-            return new DarkBlueTheme();
-        } else {
-            // default theme
-            return null;
-        }
-    }
-
+    /**
+     * Highlights the currently selected theme tab
+     * @param response .
+     */
     @Override
     public void renderHead(final IHeaderResponse response) {
         // select bootstrap tab for current theme selected

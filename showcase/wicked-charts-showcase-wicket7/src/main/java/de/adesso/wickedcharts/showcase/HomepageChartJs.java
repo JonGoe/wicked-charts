@@ -1,6 +1,6 @@
 package de.adesso.wickedcharts.showcase;
-/**
- *   Copyright 2012-2013 Wicked Charts (http://wicked-charts.googlecode.com)
+/*
+ *   Copyright 2012-2018 Wicked Charts (http://wicked-charts.googlecode.com)
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -36,21 +36,36 @@ import de.adesso.wickedcharts.showcase.links.ChartjsShowcaseLink;
 import de.adesso.wickedcharts.showcase.links.HighchartsShowcaseLink;
 import de.adesso.wickedcharts.showcase.links.UpdateChartJsLink;
 
+/**
+ * This page takes care of the Chart.js showcase logic.
+ */
 public class HomepageChartJs extends WebPage implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
+    /**
+     * Constructs the page according to the current parameters
+     * This constructor is called each time a new chart is
+     * selected.
+     * @param parameters the page parameters from the page URI
+     */
     public HomepageChartJs(final PageParameters parameters) {
         addCharts(parameters);
         addNavigationLinks();
         addChartLinks();
     }
 
+    /**
+     * Gets the charts and the code containers from the page parameters,
+     * constructs Wicket componenets from them and
+     * adds them to a Wicket ListView.
+     * @param parameters the page parameters from the page URI
+     */
     private void addCharts(PageParameters parameters){
 
         List<Chart> charts = getChartFromParams(parameters);
 
-        //Add Charts
+        //If we have more than one chart - use SmallComponents
         if(charts.size() > 1){
             List<SmallChartComponent> components = new ArrayList<>();
             for(Chart i : charts){
@@ -62,7 +77,7 @@ public class HomepageChartJs extends WebPage implements Serializable {
                     item.add( (SmallChartComponent)item.getModelObject() );
                 }
             });
-        }else {
+        }else { //else use the regular full-width chart component
             List<ChartComponent> components = new ArrayList<>();
             for (Chart i : charts) {
                 components.add(new ChartComponent(i));
@@ -86,12 +101,15 @@ public class HomepageChartJs extends WebPage implements Serializable {
             }
         });
     }
-	
+
 	private void addNavigationLinks() {
 		this.add(new HighchartsShowcaseLink());
 		this.add(new ChartjsShowcaseLink());
 	}
-	
+
+    /**
+     * Adds links to the charts in the navigation sidebar
+     */
 	private void addChartLinks() {
         this.add(new UpdateChartJsLink("LineChartBasic", "lineBasic"));
 		this.add(new UpdateChartJsLink("BarChartVertical" , "barVertical"));
@@ -137,7 +155,12 @@ public class HomepageChartJs extends WebPage implements Serializable {
         this.add(new UpdateChartJsLink("DataLabellingChart", "dataLabelling"));
         this.add(new UpdateChartJsLink("TooltipInteractions", "tooltipInteractions"));
 	}
-    
+
+    /**
+     * Returns a List of Chart objects from the current page parameters.
+     * @param params the page parameters from the page URI
+     * @return a List of Chart objects
+     */
     private List<Chart> getChartFromParams(final PageParameters params) {
         String chartString;
         List<Chart> config = new ArrayList<>();

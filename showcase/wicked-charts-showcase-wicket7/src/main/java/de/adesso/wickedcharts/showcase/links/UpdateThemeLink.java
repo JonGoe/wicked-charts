@@ -19,6 +19,11 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+/**
+ * Adds a link to a theme in the Highcharts showcase.
+ * Clicking on the link calls the onClick() method, which sets page
+ * parameters accordingly.
+ */
 public class UpdateThemeLink extends AjaxLink<Void> {
 
     private static final long serialVersionUID = 1L;

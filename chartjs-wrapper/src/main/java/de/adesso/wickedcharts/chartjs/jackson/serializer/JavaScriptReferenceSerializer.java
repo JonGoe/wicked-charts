@@ -9,6 +9,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 
 import de.adesso.wickedcharts.chartjs.chartoptions.JavaScriptReference;
 
+/**
+ * Serializes a JavaScriptReference object to JSON
+ */
 public class JavaScriptReferenceSerializer extends JsonSerializer<JavaScriptReference> {
 
 	@Override

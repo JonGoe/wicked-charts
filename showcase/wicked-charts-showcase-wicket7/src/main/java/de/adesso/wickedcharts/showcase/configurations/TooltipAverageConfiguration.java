@@ -23,7 +23,6 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
  * Sample that enables tooltips to be at a average position to the data points.
  *
  */
-
 @SuppressWarnings("serial")
 public class TooltipAverageConfiguration extends ShowcaseConfiguration {
 	public TooltipAverageConfiguration() {

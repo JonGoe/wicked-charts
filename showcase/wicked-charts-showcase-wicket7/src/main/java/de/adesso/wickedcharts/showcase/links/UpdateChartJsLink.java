@@ -1,5 +1,5 @@
 /**
- *   Copyright 2012-2013 Wicked Charts (http://wicked-charts.googlecode.com)
+ *   Copyright 2012-2018 Wicked Charts (http://wicked-charts.googlecode.com)
  *
  *   Licensed under the Apache License, Version 2.0 (the "License");
  *   you may not use this file except in compliance with the License.
@@ -14,20 +14,16 @@
  */
 package de.adesso.wickedcharts.showcase.links;
 
-import de.adesso.wickedcharts.wicket7.chartjs.Chart;
-
-import de.adesso.wickedcharts.chartjs.ChartConfiguration;
 import de.adesso.wickedcharts.showcase.HomepageChartJs;
-import de.adesso.wickedcharts.showcase.ShowcaseSession;
-import de.adesso.wickedcharts.showcase.StringFromResourceModel;
-import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration;
-
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+/**
+ * Adds a link to a chart in the showcase navigation sidebar.
+ * Clicking on the link calls the onClick() method, which sets page
+ * parameters accordingly.
+ */
 public class UpdateChartJsLink extends AjaxLink<Void> {
 
     private static final long serialVersionUID = 1L;

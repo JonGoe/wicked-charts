@@ -26,6 +26,11 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
+/**
+ * Adds a link to a chart in the showcase navigation sidebar.
+ * Clicking on the link calls the onClick() method, which sets page
+ * parameters accordingly.
+ */
 public class UpdateHighchartLink extends AjaxLink<Void> {
 
     private static final long serialVersionUID = 1L;

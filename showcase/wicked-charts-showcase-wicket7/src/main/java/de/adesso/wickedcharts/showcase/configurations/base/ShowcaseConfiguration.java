@@ -12,6 +12,9 @@ import org.apache.wicket.markup.html.panel.Fragment;
 
 import de.adesso.wickedcharts.chartjs.ChartConfiguration;
 
+/**
+ * The base class for all chart configurations for the showcase
+ */
 @SuppressWarnings("serial")
 public abstract class ShowcaseConfiguration extends ChartConfiguration implements Serializable {
 
