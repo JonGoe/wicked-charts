@@ -38,7 +38,7 @@ public class JsonRenderer {
 
 	/**
 	 * This method gives the opportunity to add a custom serializer to serialize
-	 * one of the highchart option classes. It may be nec,essary to serialize
+	 * one of the highchart option classes. It may be necessary to serialize
 	 * certain option classes differently for different web frameworks.
 	 *
 	 * @param clazz

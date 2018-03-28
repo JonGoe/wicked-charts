@@ -9,6 +9,9 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
 
 import java.util.Arrays;
 
+/**
+ * If intersect is true, this is only triggered when the mouse position intersects an item in the graph.
+ */
 @SuppressWarnings("serial")
 public class NearestIntersectTrueConfiguration extends ShowcaseConfiguration {
     public NearestIntersectTrueConfiguration() {

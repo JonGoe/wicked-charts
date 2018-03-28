@@ -19,6 +19,9 @@ import de.adesso.wickedcharts.chartjs.chartoptions.label.TextLabel;
 import de.adesso.wickedcharts.chartjs.chartoptions.valueType.IntegerValue;
 import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration;
 
+/**
+ * If the intersect setting is true, the first intersecting item is used to determine the index in the data.
+ */
 @SuppressWarnings("serial")
 public class IndexIntersectTrueConfiguration extends ShowcaseConfiguration {
     public IndexIntersectTrueConfiguration() {

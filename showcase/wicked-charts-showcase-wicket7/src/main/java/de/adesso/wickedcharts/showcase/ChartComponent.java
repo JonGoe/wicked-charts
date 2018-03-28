@@ -5,6 +5,9 @@ import de.adesso.wickedcharts.wicket7.chartjs.Chart;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.Panel;
 
+/**
+ * Wicket-component that adds the chart configuration and markup to the page.
+ */
 public class ChartComponent extends Panel {
 
     public ChartComponent(Chart chart)

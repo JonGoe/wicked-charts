@@ -9,6 +9,9 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
 
 import java.util.Arrays;
 
+/**
+ * If intersect false the nearest item, in the x direction, is used to determine the index.
+ */
 @SuppressWarnings("serial")
 public class IndexIntersectFalseConfiguration extends ShowcaseConfiguration {
     public IndexIntersectFalseConfiguration() {

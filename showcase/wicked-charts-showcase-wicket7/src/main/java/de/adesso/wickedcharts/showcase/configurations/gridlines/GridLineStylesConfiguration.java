@@ -19,11 +19,10 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
 
 
 /**
- * 
- * A sample that shows how different grid line styles are configured.
+ *
+ * Chart configuration for different grid line styles.
  *
  */
-
 @SuppressWarnings("serial")
 public class GridLineStylesConfiguration extends ShowcaseConfiguration {
 	public GridLineStylesConfiguration() {
