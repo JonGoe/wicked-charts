@@ -26,7 +26,6 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
  * A sample that shows how the 'end' fill option works
  *
  */
-
 @SuppressWarnings("serial")
 public class AreaLineBoundariesChartEndConfiguration extends ShowcaseConfiguration {
 	public AreaLineBoundariesChartEndConfiguration() {

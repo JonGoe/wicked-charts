@@ -9,6 +9,9 @@ import org.apache.wicket.markup.html.internal.Enclosure;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.markup.html.panel.Panel;
 
+/**
+ * Wicket-component that adds the appropriate code container for the displayed charts to the page.
+ */
 public class CodeComponent extends Panel {
 
     public CodeComponent(Chart chart)

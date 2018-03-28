@@ -9,6 +9,9 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
 
 import java.util.Arrays;
 
+/**
+ * Does not return all items that would intersect based on the Y coordinate of the position.
+ */
 @SuppressWarnings("serial")
 public class yIntersectFalseConfiguration extends ShowcaseConfiguration {
     public yIntersectFalseConfiguration() {

@@ -9,6 +9,9 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
 
 import java.util.Arrays;
 
+/**
+ * Finds all of the items that intersect the point.
+ */
 @SuppressWarnings("serial")
 public class PointIntersectTrueConfiguration extends ShowcaseConfiguration {
     public PointIntersectTrueConfiguration() {

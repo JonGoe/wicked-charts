@@ -3,6 +3,11 @@ package de.adesso.wickedcharts.showcase.configurations.gridlines;
 
 import de.adesso.wickedcharts.chartjs.chartoptions.Title;
 
+/**
+ *
+ * Chart configuration for the area chart grid line layout.
+ *
+ */
 @SuppressWarnings("serial")
 public class GridLinesChartAreaConfiguration extends GridLinesBasicConfiguration {
 	

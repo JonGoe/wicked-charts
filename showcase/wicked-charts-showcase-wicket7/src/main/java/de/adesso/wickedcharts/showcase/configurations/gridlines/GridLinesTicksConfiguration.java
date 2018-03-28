@@ -3,6 +3,11 @@ package de.adesso.wickedcharts.showcase.configurations.gridlines;
 
 import de.adesso.wickedcharts.chartjs.chartoptions.Title;
 
+/**
+ *
+ * Chart configuration in order to not display the ticks.
+ *
+ */
 @SuppressWarnings("serial")
 public class GridLinesTicksConfiguration extends GridLinesBasicConfiguration {
 	

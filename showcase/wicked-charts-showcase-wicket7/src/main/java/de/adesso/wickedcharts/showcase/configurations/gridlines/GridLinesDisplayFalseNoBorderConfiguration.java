@@ -2,6 +2,11 @@ package de.adesso.wickedcharts.showcase.configurations.gridlines;
 
 import de.adesso.wickedcharts.chartjs.chartoptions.Title;
 
+/**
+ *
+ * Chart configuration in order to not display grid lines and axes.
+ *
+ */
 @SuppressWarnings("serial")
 public class GridLinesDisplayFalseNoBorderConfiguration extends GridLinesBasicConfiguration {
 	

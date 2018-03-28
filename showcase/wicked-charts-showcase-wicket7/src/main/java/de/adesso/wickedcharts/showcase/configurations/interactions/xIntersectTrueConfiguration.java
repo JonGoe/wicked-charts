@@ -9,6 +9,9 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
 
 import java.util.Arrays;
 
+/**
+ * Returns all items that would intersect based on the X coordinate of the position only.
+ */
 @SuppressWarnings("serial")
 public class xIntersectTrueConfiguration extends ShowcaseConfiguration {
     public xIntersectTrueConfiguration() {

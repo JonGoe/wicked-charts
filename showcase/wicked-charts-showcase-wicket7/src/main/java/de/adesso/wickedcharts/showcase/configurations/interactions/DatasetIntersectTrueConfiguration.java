@@ -9,6 +9,9 @@ import de.adesso.wickedcharts.showcase.configurations.base.ShowcaseConfiguration
 
 import java.util.Arrays;
 
+/**
+ * If the intersect setting is true, the first intersecting item is used to determine the index in the data.
+ */
 @SuppressWarnings("serial")
 public class DatasetIntersectTrueConfiguration extends ShowcaseConfiguration {
     public DatasetIntersectTrueConfiguration() {
